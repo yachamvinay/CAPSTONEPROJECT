@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+        <h4 class="text-dark p-3">All User Asked Question Approval</h4>
+        <div class="col-12 col-lg-12">
+            <mat-card class="mb-3" *ngFor="let que of myQuestions index of i">
+                <mat-card-content class="p-2">
+                    <div class="row d-flex">
+                        <p class="text-dark m-p-0"><strong>Question.</strong> {{que.question}}</p>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p class="text-dark m-p-0"><small>Question created by - {{que.user.firstName + " " +
+                                        que.user.lastName}}</small></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p class="text-dark m-p-0"><small>Date - {{que.createdDate}}</small></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-card-content>
+                <mat-card-footer class="p-3">
+                    <div class="col-lg-12 d-flex">
+                        <a *ngIf="que.enabled" (click)="disabled(que.id)" class="btn btn-warning btn-sm">Disabled</a>
+                        <a *ngIf="!que.enabled" (click)="approve(que.id)" class="btn btn-primary btn-sm">Enable</a>
+                        <a *ngIf="que.enabled" (click)="delete(que.id)" class="btn btn-danger btn-sm mx-2">Delete</a>
+                        <a *ngIf="!que.enabled" class="btn btn-info btn-sm mx-2"><span class="text-danger">*</span> Enable the question before delete.</a>
+                        <a *ngIf="que.enabled" class="nav-link mx-2">Status - <span class="text-success">Now Question is Enabled.</span></a>
+                    </div>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>
